@@ -1,9 +1,10 @@
 //noprotect
-var o=console,log=o.log.bind(o),dir=o.dir.bind(o);o.clear();
+var o=console, log=o.log.bind(o), dir=o.dir.bind(o);
+o.clear();
 //
 function iterate(from){
  var a, b=from, e=b;
- log('start:',e);
+ //log('start:',e);
  while(e){
 	a=e.firstElementChild;
 	if(a===null){
@@ -13,7 +14,8 @@ function iterate(from){
 			do{
 				e=e.parentNode;
 				if(e===b){break;};
-			}while((a=e.nextElementSibling)===null);
+				a=e.nextElementSibling;
+			}while(a===null);
 			e=a;
 
 		}else{
@@ -22,9 +24,9 @@ function iterate(from){
 	}else{
 		e=a;
 	};
-	log('node:',e);
+	//log('node:',e);
  };
- log('end');
+ //log('end');
 };
 //
 iterate(document.body);
