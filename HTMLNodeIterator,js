@@ -1,0 +1,31 @@
+function HTMLNodeIterator()
+{
+	//task:function,node:HTML Node
+	this.iterate = function iterate(task,node)
+	{
+		for(var x=0;x<node.childNodes.length;x++)
+		{
+			var childNode = node.childNodes[x];
+ 
+			task(childNode);
+ 
+			if( childNode.childNodes.length > 0 )
+				this.iterate(task,childNode);
+		}
+	}
+}
+
+
+var bodyElement = document.getElementsByTagName("body")[0];
+ 
+var htmlNodeIterator = new HTMLNodeIterator();
+htmlNodeIterator.iterate(drawBorders,bodyElement);
+ 
+ 
+function drawBorders(node)
+{
+	if(node.nodeName == "DIV")
+	{
+		node.style.border = "solid 1px #ff0000";
+	}
+}
